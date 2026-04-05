@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조성원내과- 처방전</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=SUIT:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Jo Sungwon Internal Medicine</p>
+        <h1>조성원내과- 처방전</h1>
+        <p class="hero-text">
+          외래 환자의 주증상과 진료 정보를 입력하면, 감별진단을 위한 추가 질문과 의심 진단,
+          필요한 검사, 우선 의심 진단의 약물처방·생활요법·주의사항을 바로 출력해 주는 웹 화면입니다.
+        </p>
+      </div>
+      <div class="hero-card">
+        <p class="card-label">진료 흐름</p>
+        <ol>
+          <li>환자 정보 입력</li>
+          <li>결과 생성 클릭</li>
+          <li>출력값 확인 및 복사</li>
+        </ol>
+      </div>
+    </header>
+
+    <main class="content-grid">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <h2>환자 정보 입력</h2>
+          <p>현재는 기침, 인후통, 복통, 두통, 어지럼증, 흉통 등 흔한 외래 증상에 대해 우선 지원합니다.</p>
+        </div>
+
+        <form id="patient-form">
+          <div class="field-grid">
+            <label>
+              <span>나이/성별</span>
+              <input type="text" name="ageSex" placeholder="예: 58세 여성">
+            </label>
+            <label>
+              <span>주증상</span>
+              <input type="text" name="chiefComplaint" placeholder="예: 3일 전부터 기침과 가래">
+            </label>
+            <label>
+              <span>증상 시작 시점 및 기간</span>
+              <input type="text" name="onsetDuration" placeholder="예: 3일 전 시작, 점차 심해짐">
+            </label>
+            <label>
+              <span>증상의 양상</span>
+              <input type="text" name="character" placeholder="예: 마른기침, 야간 악화">
+            </label>
+            <label>
+              <span>동반 증상</span>
+              <input type="text" name="associatedSymptoms" placeholder="예: 미열, 인후통, 콧물">
+            </label>
+            <label>
+              <span>악화/완화 요인</span>
+              <input type="text" name="aggravatingRelieving" placeholder="예: 밤에 심해지고 수분 섭취 후 완화">
+            </label>
+            <label>
+              <span>과거력</span>
+              <input type="text" name="pastHistory" placeholder="예: 고혈압, 당뇨">
+            </label>
+            <label>
+              <span>복용약</span>
+              <input type="text" name="medications" placeholder="예: 암로디핀, 메트포르민">
+            </label>
+            <label>
+              <span>알레르기</span>
+              <input type="text" name="allergies" placeholder="예: 페니실린 알레르기 없음">
+            </label>
+            <label>
+              <span>활력징후</span>
+              <input type="text" name="vitals" placeholder="예: BP 128/78, HR 84, BT 37.6">
+            </label>
+            <label class="full-width">
+              <span>진찰 소견</span>
+              <textarea name="physicalExam" rows="3" placeholder="예: 인후 발적, 청진상 wheezing 없음"></textarea>
+            </label>
+            <label class="full-width">
+              <span>시행한 검사와 결과</span>
+              <textarea name="testsDone" rows="3" placeholder="예: 코로나 자가검사 음성"></textarea>
+            </label>
+            <label class="full-width">
+              <span>추가 메모</span>
+              <textarea name="additionalNotes" rows="3" placeholder="예: 흡연력 없음, 가족력 특이사항 없음"></textarea>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="primary-btn">결과 생성하기</button>
+            <button type="button" id="fill-sample" class="ghost-btn">예시 채우기</button>
+            <button type="reset" class="ghost-btn">초기화</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel result-panel">
+        <div class="panel-heading">
+          <h2>생성된 출력값</h2>
+          <p>주증상 기반으로 감별 질문, 의심 진단, 검사, 처방/생활요법/주의사항이 정리됩니다.</p>
+        </div>
+
+        <div class="result-actions">
+          <button type="button" id="copy-prompt" class="secondary-btn">결과 복사</button>
+        </div>
+
+        <pre id="prompt-output" class="prompt-output">아직 생성된 내용이 없습니다. 왼쪽에 환자 정보를 입력해 주세요.</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
